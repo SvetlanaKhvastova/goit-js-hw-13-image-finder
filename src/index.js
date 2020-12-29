@@ -6,7 +6,7 @@ import getLargeImageURL from './js/basiclightbox.js';
 import loadmoreBtnJs from './js/load-more-btn.js';
 import errorsNotifications from './js/pnotify.js';
 
-const { form, gallery, searchBtn } = refs;
+const { form, input, gallery, searchBtn } = refs;
 
 form.addEventListener('submit', galleryOnSubmit);
 gallery.addEventListener('click', getLargeImageURL);
@@ -29,25 +29,20 @@ function galleryOnSubmit(ev) {
 
   loadmoreBtnJs.disable();
 
-  apiService.getFetch().then(updateGalleryMarkup);
-
   loadmoreBtnJs.enable();
   loadmoreBtnJs.show();
+  apiService.getFetch().then(updateGalleryMarkup);
+
+  input.value = '';
 }
 
 function loadMoreBtn() {
   loadmoreBtnJs.disable();
 
-  apiService.getFetch().then(updateGalleryMarkup);
-
   loadmoreBtnJs.enable();
   loadmoreBtnJs.show();
 
-  window.scrollTo(0, apiService.scrollPageFunc());
-  window.scrollTo({
-    left: 1000,
-    behavior: 'smooth',
-  });
+  apiService.getFetch().then(updateGalleryMarkup);
 }
 
 function clearArticlesGallery() {

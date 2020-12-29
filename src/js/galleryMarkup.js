@@ -6,6 +6,12 @@ const { gallery } = refs;
 function updateGalleryMarkup(el) {
   const markup = galleryMarkupHbs(el);
   gallery.insertAdjacentHTML('beforeend', markup);
+
+  window.scrollTo({
+    top: document.documentElement.scrollHeight,
+    behavior: 'smooth',
+  });
+
   return gallery;
 }
 
