@@ -43,9 +43,9 @@ function loadMoreBtn() {
   loadmoreBtnJs.enable();
   loadmoreBtnJs.show();
 
-  window.scrollTo(0, 1000);
+  window.scrollTo(0, apiService.scrollPageFunc());
   window.scrollTo({
-    top: 35,
+    left: 1000,
     behavior: 'smooth',
   });
 }

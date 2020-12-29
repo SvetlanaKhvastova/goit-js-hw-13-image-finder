@@ -5,7 +5,7 @@ const { gallery } = refs;
 
 function updateGalleryMarkup(el) {
   const markup = galleryMarkupHbs(el);
-  gallery.insertAdjacentHTML('afterbegin', markup);
+  gallery.insertAdjacentHTML('beforeend', markup);
   return gallery;
 }
 

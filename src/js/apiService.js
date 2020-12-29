@@ -8,6 +8,7 @@ export default {
   queryEl: '',
   page: 1,
   perPage: 12,
+  scrollPage: 1000,
 
   getFetch() {
     console.log(this);
@@ -21,7 +22,11 @@ export default {
         if (hits.length === 0) {
           throw new Error('Error feching data');
         }
+        if (hits.length < this.perPage) {
+          loadmoreBtnJs.hide();
+        }
         this.incrementPage();
+        this.scrollPageFunc();
         return hits;
       })
       .catch(error => {
@@ -30,6 +35,10 @@ export default {
         loadmoreBtnJs.hide();
         return error;
       });
+  },
+
+  scrollPageFunc() {
+    this.scrollPage += 1000;
   },
 
   incrementPage() {
