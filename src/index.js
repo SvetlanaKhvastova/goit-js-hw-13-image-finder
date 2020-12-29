@@ -21,17 +21,13 @@ function galleryOnSubmit(ev) {
   clearArticlesGallery();
 
   apiService.query = ev.currentTarget.elements.query.value;
+
   if (apiService.query === '') {
     loadmoreBtnJs.hide();
     return errorsNotifications('Enter something on the line.');
   }
 
   apiService.resetPage();
-
-  loadmoreBtnJs.disable();
-
-  loadmoreBtnJs.enable();
-  loadmoreBtnJs.show();
 
   apiService.getFetch().then(updateGalleryMarkup);
 
@@ -40,9 +36,6 @@ function galleryOnSubmit(ev) {
 
 function loadMoreBtn() {
   loadmoreBtnJs.disable();
-
-  loadmoreBtnJs.enable();
-  loadmoreBtnJs.show();
 
   apiService.getFetch().then(updateGalleryMarkup);
 }

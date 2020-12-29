@@ -10,27 +10,28 @@ export default {
   perPage: 12,
 
   getFetch() {
-    console.log(this);
     let url = `${baseUrl}?image_type=photo&orientation=horizontal&q=${this.queryEl}&page=${this.page}&per_page=${this.perPage}&key=${key}`;
 
     return fetch(url)
       .then(response => {
-        return response.json();
+        if (response.ok) {
+          return response.json();
+        }
       })
-      .then(({ hits }) => {
+      .then(({ hits, totalHits }) => {
         if (hits.length === 0) {
           throw new Error('Error feching data');
         }
-        if (hits.length < this.perPage) {
-          loadmoreBtnJs.hide();
-        }
+
         this.incrementPage();
-        return hits;
+
+        return { hits, totalHits };
       })
       .catch(error => {
         errorsNotifications('Nothing was found for your request.');
-        loadmoreBtnJs.disable();
+
         loadmoreBtnJs.hide();
+
         return error;
       });
   },
