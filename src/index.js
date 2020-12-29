@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import refs from './js/refs.js';
 import apiService from './js/apiService.js';
@@ -31,6 +32,7 @@ function galleryOnSubmit(ev) {
 
   loadmoreBtnJs.enable();
   loadmoreBtnJs.show();
+
   apiService.getFetch().then(updateGalleryMarkup);
 
   input.value = '';

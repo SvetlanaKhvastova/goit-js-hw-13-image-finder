@@ -1,4 +1,5 @@
 import refs from './refs.js';
+
 const { searchBtn, label, spinner } = refs;
 
 export default {

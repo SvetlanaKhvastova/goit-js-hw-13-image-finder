@@ -12,13 +12,18 @@ body {
   margin: 0 auto;
   background-color: dimgray;
 }
+
 li {
   list-style: none;
 }
 
 .search-form {
   margin-top: 40px;
+  margin-bottom: 40px;
   margin-left: 4%;
+}
+.input {
+  width: 95%;
 }
 
 .stats.container {
