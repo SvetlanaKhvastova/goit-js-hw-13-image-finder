@@ -17,21 +17,18 @@ export default {
         if (response.ok) {
           return response.json();
         }
+        throw new Error('Error feching data');
       })
       .then(({ hits, totalHits }) => {
-        if (hits.length === 0) {
-          throw new Error('Error feching data');
+        if (hits.length > 0) {
+          this.incrementPage();
+          return { hits, totalHits };
         }
-
-        this.incrementPage();
-
-        return { hits, totalHits };
+        errorsNotifications('Nothing was found for your request.');
+        loadmoreBtnJs.disable();
+        loadmoreBtnJs.hide();
       })
       .catch(error => {
-        errorsNotifications('Nothing was found for your request.');
-
-        loadmoreBtnJs.hide();
-
         return error;
       });
   },
